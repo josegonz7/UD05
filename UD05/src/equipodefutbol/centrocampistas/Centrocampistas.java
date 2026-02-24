@@ -4,24 +4,24 @@ import equipodefutbol.Jugador;
 
 public class Centrocampistas extends Jugador {
 	
-	private int paradas;
+	private int pasesCompletados;
 
-	public Centrocampistas(String nombre, int dorsal, String equipo, int paradas) {
+	public Centrocampistas(int pasesCompletados, String nombre, int dorsal, String equipo, int paradas) {
 		super(nombre, dorsal, equipo);
-		this.paradas = paradas;
+		this.pasesCompletados = pasesCompletados;
 	}
 
-	public int getParadas() {
-		return paradas;
+	public int getPasesCompletados() {
+		return pasesCompletados;
 	}
 
-	public void setParadas(int paradas) {
-		this.paradas = paradas;
+	public void setPasesCompletados(int pasesCompletados) {
+		this.pasesCompletados = pasesCompletados;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("Portero [nombre= %s, dorsal= %d, equipo= %s, paradas= %d]", this.getNombre(), this.getDorsal(), this.getEquipo(), this.paradas);
+		return String.format("Centrocampistas [nombre= %s, dorsal= %d, equipo= %s, pasesCompletados= %s]", this.getNombre(), this.getDorsal(), this.getEquipo(), this.pasesCompletados);
 	}
 
 	@Override
@@ -33,8 +33,8 @@ public class Centrocampistas extends Jugador {
 		if (getClass() != obj.getClass())
 			return false;
 		
-		Portero other = (Portero) obj;
-		return super.equals(other) && this.paradas == other.paradas;
+		Centrocampistas other = (Centrocampistas) obj;
+		return super.equals(other) && this.pasesCompletados == other.pasesCompletados;
 	}
 
 	@Override
