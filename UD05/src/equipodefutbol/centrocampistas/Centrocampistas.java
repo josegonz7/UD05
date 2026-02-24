@@ -1,45 +1,57 @@
+
 package equipodefutbol.centrocampistas;
 
+import java.util.List;
+
 import equipodefutbol.Jugador;
+import equipodefutbol.Portero;
+import equipodefutbol.Puesto;
+import equipodefutbol.defensas.Central;
+import equipodefutbol.defensas.Lateral;
 
-public class Centrocampistas extends Jugador {
+public class Centrocampistas {
 	
-	private int pasesCompletados;
+	private List<Jugador> jugadores;
+	
+	public void addJugador(int index, Jugador j) {
+//		0: Portero.
+		if(index != 0 && j instanceof Portero) {
+			throw new IllegalArgumentException("El portero debe ir en la posición 0. ");
+		}
+//		1: Lateral derecho.
+		if(index != 1 && j instanceof Lateral && ((Lateral) j).getPuesto().equals(Puesto.DERECHO)) {
+			throw new IllegalArgumentException("El lateral derecho debe ir en la posición 1. ");
+		}
+//		2, 3. Centrales.
+		if(index != 2 && index != 3 && j instanceof Central) {
+			throw new IllegalArgumentException("El central debe ir en la posición 2 o 3. ");
+		}
+//		4. Lateral izquierdo.
+//		5, 6. Pivotes.
+//		7. Mediapunta.
+//		8. Extremo derecho.
+//		9. Extremo izquierdo.
+//		10. Delantero centro.
 
-	public Centrocampistas(int pasesCompletados, String nombre, int dorsal, String equipo, int paradas) {
-		super(nombre, dorsal, equipo);
-		this.pasesCompletados = pasesCompletados;
-	}
-
-	public int getPasesCompletados() {
-		return pasesCompletados;
-	}
-
-	public void setPasesCompletados(int pasesCompletados) {
-		this.pasesCompletados = pasesCompletados;
-	}
-
-	@Override
-	public String toString() {
-		return String.format("Centrocampistas [nombre= %s, dorsal= %d, equipo= %s, pasesCompletados= %s]", this.getNombre(), this.getDorsal(), this.getEquipo(), this.pasesCompletados);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) 
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
 		
-		Centrocampistas other = (Centrocampistas) obj;
-		return super.equals(other) && this.pasesCompletados == other.pasesCompletados;
-	}
-
-	@Override
-	public void mostrarDatos() {
-		System.out.println(this.toString());		
+		this.jugadores.set(index, j);
 	}
 	
+	public void mostrarAlineacion() {
+		if(this.jugadores.size() != 11) {
+			throw new IllegalArgumentException("La alineación no contiene 11 jugadores. ");
+		}
+		
+		System.out.println("----------ALINEACIÓN----------");
+		for(Jugador j : this.jugadores) {
+			System.out.println(j);
+		}
+	}
+	
+	public void mostrarDatosJugadores() {
+		for(Jugador j : this.jugadores) {
+			j.mostrarDatos();
+		}
+	}
+
 }

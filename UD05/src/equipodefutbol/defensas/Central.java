@@ -1,7 +1,5 @@
 package equipodefutbol.defensas;
 
-import equipodefutbol.Puesto;
-
 public class Central extends Defensas {
 	
 	private int entradas;
@@ -21,7 +19,7 @@ public class Central extends Defensas {
 
 	@Override
 	public String toString() {
-		return String.format("Lateral [nombre= %s, dorsal= %d, equipo= %s, disputasRealizadas= %d, entradas= %s]", this.getNombre(), this.getDorsal(), this.getEquipo(), this.getDisputasRealizadas(), this.getEntradas());
+		return String.format("Central [nombre= %s, dorsal= %d, equipo= %s, disputasRealizadas= %d, entradas= %d]", this.getNombre(), this.getDorsal(), this.getEquipo(), this.getDisputasRealizadas(), this.entradas);
 	}
 
 	@Override
@@ -32,14 +30,14 @@ public class Central extends Defensas {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		
 		Central other = (Central) obj;
+
 		return super.equals(obj) && this.entradas == other.entradas;
 	}
 
 	@Override
 	public void mostrarDatos() {
 		System.out.println(this.toString());
-		
 	}
+
 }
